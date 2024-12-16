@@ -125,10 +125,11 @@ st.markdown(
         }
         #MainMenu {visibility: hidden !important;}
         footer {visibility: hidden !important;}
-       [data-testid="stDecoration"]{visibility: hidden !important;}
-        .css-10trblm{
-        visibility: hidden !important;
-        }
+        .css-10trblm { visibility: hidden !important; }
+        [data-testid="stDecoration"]{display:none !important}
+        [data-testid="stAppViewContainer"] > div:last-child {display:none !important}
+
+
     </style>
     """,
     unsafe_allow_html=True,
