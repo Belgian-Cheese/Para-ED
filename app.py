@@ -10,7 +10,7 @@ LANGUAGE_DATA_FILE = "language_data.json"
 LANGUAGE_DATABASE_FILE = "language_database.json"  # New file
 
 # API URL
-API_URL = "http://127.0.0.1:5000"
+API_URL = "http://172.20.10.8:5000"
 
 # Function to load translations from the database file
 def load_translations():
