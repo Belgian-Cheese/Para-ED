@@ -113,7 +113,7 @@ def translate_text(key):
 # Set page configuration
 st.set_page_config(page_title=translate_text("title"), layout="wide")
 
-# Custom CSS to hide the top right menu and the Manage app button
+# Custom CSS to hide the top right menu and the Manage app button, and the footer.
 st.markdown(
     """
     <style>
@@ -123,6 +123,8 @@ st.markdown(
        [data-testid="stAppViewContainer"] > div:nth-child(2){
           display: none;
         }
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
     </style>
     """,
     unsafe_allow_html=True,
