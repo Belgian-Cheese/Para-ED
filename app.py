@@ -113,7 +113,7 @@ def translate_text(key):
 # Set page configuration
 st.set_page_config(page_title=translate_text("title"), layout="wide")
 
-# Custom CSS to hide the top right menu and the Manage app button, and the footer.
+# Custom CSS to hide the top right menu and the Manage app button, and the footer and the Streamlit icon at the bottom
 st.markdown(
     """
     <style>
@@ -125,6 +125,7 @@ st.markdown(
         }
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
+        [data-testid="stDecoration"]{visibility: hidden;}
     </style>
     """,
     unsafe_allow_html=True,
@@ -281,10 +282,10 @@ def make_api_call(endpoint, method="POST"):
 # Sidebar navigation section
 with st.sidebar:
      st.title(translate_text("title"))
-    
+
      for i in range(1, 5):
          st.sidebar.write(f"  ")
-    
+
     #Button links
      if st.sidebar.button(translate_text("home"), key="home", use_container_width=True):
          st.session_state.current_page = "home"
@@ -294,7 +295,7 @@ with st.sidebar:
           st.session_state.current_page = "profile"
      if st.sidebar.button(translate_text("call_help"), key="call_help", use_container_width=True):
          st.session_state.current_page = "call_help"
-     
+
      for i in range(1, 20):
          st.sidebar.write(f"  ")
 
@@ -385,7 +386,7 @@ if st.session_state.logged_in:
         if st.session_state.logged_in:
             st.write(f"**{translate_text('name')}** {st.session_state.user_name}")
             st.write(f"**{translate_text('email')}** {st.session_state.email}")
-            
+
             # Language selection dropdown
             selected_language = st.selectbox("Select Language", options=list(TRANSLATIONS.keys()), index=list(TRANSLATIONS.keys()).index(st.session_state.language) )
             if selected_language != st.session_state.language:
