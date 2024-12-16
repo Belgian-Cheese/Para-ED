@@ -118,14 +118,17 @@ st.markdown(
     """
     <style>
         [data-testid="stToolbar"] {
-          display: none;
+          display: none !important;
         }
        [data-testid="stAppViewContainer"] > div:nth-child(2){
-          display: none;
+          display: none !important;
         }
-        #MainMenu {visibility: hidden;}
-        footer {visibility: hidden;}
-        [data-testid="stDecoration"]{visibility: hidden;}
+        #MainMenu {visibility: hidden !important;}
+        footer {visibility: hidden !important;}
+       [data-testid="stDecoration"]{visibility: hidden !important;}
+        .css-10trblm{
+        visibility: hidden !important;
+        }
     </style>
     """,
     unsafe_allow_html=True,
@@ -282,10 +285,10 @@ def make_api_call(endpoint, method="POST"):
 # Sidebar navigation section
 with st.sidebar:
      st.title(translate_text("title"))
-
+    
      for i in range(1, 5):
          st.sidebar.write(f"  ")
-
+    
     #Button links
      if st.sidebar.button(translate_text("home"), key="home", use_container_width=True):
          st.session_state.current_page = "home"
@@ -295,7 +298,7 @@ with st.sidebar:
           st.session_state.current_page = "profile"
      if st.sidebar.button(translate_text("call_help"), key="call_help", use_container_width=True):
          st.session_state.current_page = "call_help"
-
+     
      for i in range(1, 20):
          st.sidebar.write(f"  ")
 
