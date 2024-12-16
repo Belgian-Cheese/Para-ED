@@ -65,24 +65,6 @@ def save_language_data(data):
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 
-# Set page configuration
-st.set_page_config(page_title=translate_text("title"), layout="wide")
-
-# Custom CSS to hide the top right menu and the Manage app button
-st.markdown(
-    """
-    <style>
-        [data-testid="stToolbar"] {
-          display: none;
-        }
-       [data-testid="stAppViewContainer"] > div:nth-child(2){
-          display: none;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-
 # Initialize session state variables
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
@@ -102,6 +84,7 @@ if "tracking_enabled" not in st.session_state:
     st.session_state.tracking_enabled = False
 if "language" not in st.session_state:
     st.session_state.language = "en"  # Default language
+
 
 # Load user data
 user_data = load_user_data()
@@ -126,8 +109,26 @@ if "language" in language_data:
 def translate_text(key):
     return TRANSLATIONS.get(st.session_state.language, {}).get(key, key)
 
+
 # Set page configuration
 st.set_page_config(page_title=translate_text("title"), layout="wide")
+
+# Custom CSS to hide the top right menu and the Manage app button
+st.markdown(
+    """
+    <style>
+        [data-testid="stToolbar"] {
+          display: none;
+        }
+       [data-testid="stAppViewContainer"] > div:nth-child(2){
+          display: none;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+
 
 # Custom CSS to make buttons scrollable and logo in corner
 st.markdown(
