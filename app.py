@@ -65,6 +65,24 @@ def save_language_data(data):
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 
+# Set page configuration
+st.set_page_config(page_title=translate_text("title"), layout="wide")
+
+# Custom CSS to hide the top right menu and the Manage app button
+st.markdown(
+    """
+    <style>
+        [data-testid="stToolbar"] {
+          display: none;
+        }
+       [data-testid="stAppViewContainer"] > div:nth-child(2){
+          display: none;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # Initialize session state variables
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
